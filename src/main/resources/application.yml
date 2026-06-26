@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: shop-token-metrics
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # health -> probes (matches the Helm chart's /actuator/health probes);
+        # prometheus -> the scrape endpoint Micrometer exposes for Prometheus.
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: shop-token-metrics
